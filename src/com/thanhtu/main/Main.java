@@ -22,7 +22,7 @@ public class Main {
 
 		System.out.println("a. Call method  arguments");
 
-		// call method sumAB
+		//convert list string to list type of SumAB
 		List<Class<?>> listTypeSumAB = functionSumAB.getListTypeArgument().stream().map(ele -> {
 			try {
 				return Class.forName(ele);
@@ -34,6 +34,7 @@ public class Main {
 		}).collect(Collectors.toList());
 		// convert to List To Array SumAB
 		Class<?>[] typeArrays = listTypeSumAB.stream().toArray(Class<?>[]::new);
+		// call method sumAB
 		Method methodSumAB = Function.class.getDeclaredMethod(functionSumAB.getFunctionName(), typeArrays);
 		methodSumAB.invoke(objFuntion, 5.0, 6.0);
 
@@ -43,7 +44,7 @@ public class Main {
 		List<String> listArgumentSumArray = Arrays.asList("java.util.List");
 		functionSumArray.setListTypeArgument(listArgumentSumArray);
 
-		// call method sumAB
+		//convert list string to list type of SumArray
 		List<Class<?>> listTypeSumArrays = functionSumArray.getListTypeArgument().stream().map(ele -> {
 			try {
 				return Class.forName(ele);
@@ -55,6 +56,7 @@ public class Main {
 		}).collect(Collectors.toList());
 		// convert to List To Array SumAB
 		typeArrays= listTypeSumArrays.stream().toArray(Class<?>[]::new);
+		// call method sumAB
 		Method methodSumArrays = Function.class.getDeclaredMethod(functionSumArray.getFunctionName(), typeArrays);
 		List<Double> listArrays=Arrays.asList(1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0);
 		methodSumArrays.invoke(objFuntion, listArrays);
